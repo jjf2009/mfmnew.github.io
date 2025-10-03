@@ -89,6 +89,26 @@ All colors MUST be HSL.
     animation: shining 2s linear infinite;
   }
 
+  /* Scroll reveal animation */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gradient text effect */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--glow-cyan)), hsl(var(--glow-yellow)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   @keyframes shining {
     0% {
       text-shadow: 0 0 10px hsl(var(--glow-cyan) / 0.7), 0 0 20px hsl(var(--glow-cyan) / 0.5);

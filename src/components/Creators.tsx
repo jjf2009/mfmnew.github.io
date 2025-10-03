@@ -15,33 +15,46 @@ const Creators = () => {
   useEffect(() => {
     const fetchCreators = async () => {
       try {
-        const response = await fetch('https://api.github.com/orgs/move-fast-and-break-things/members');
+        // Try to fetch from build-time generated data first
+        const response = await fetch('/data/creators.json');
         if (!response.ok) {
-          throw new Error('Failed to fetch members');
+          throw new Error('Failed to fetch creators data');
         }
-        const members = await response.json();
-
-        const creatorsData = await Promise.all(
-          members.map(async (member: { url: string }) => {
-            const userResponse = await fetch(member.url);
-            if (!userResponse.ok) {
-              throw new Error('Failed to fetch user data');
-            }
-            const userData = await userResponse.json();
-            return {
-              name: userData.name || userData.login,
-              bio: userData.bio,
-              avatar: userData.avatar_url,
-              html_url: userData.html_url,
-            };
-          })
-        );
-
+        const creatorsData = await response.json();
+        
         setCreators(creatorsData);
         setLoading(false);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-        setLoading(false);
+        // Fallback to runtime API calls if build-time data not available
+        try {
+          const response = await fetch('https://api.github.com/orgs/move-fast-and-break-things/members');
+          if (!response.ok) {
+            throw new Error('Failed to fetch members');
+          }
+          const members = await response.json();
+
+          const creatorsData = await Promise.all(
+            members.map(async (member: { url: string }) => {
+              const userResponse = await fetch(member.url);
+              if (!userResponse.ok) {
+                throw new Error('Failed to fetch user data');
+              }
+              const userData = await userResponse.json();
+              return {
+                name: userData.name || userData.login,
+                bio: userData.bio,
+                avatar: userData.avatar_url,
+                html_url: userData.html_url,
+              };
+            })
+          );
+
+          setCreators(creatorsData);
+          setLoading(false);
+        } catch (fallbackErr) {
+          setError(fallbackErr instanceof Error ? fallbackErr.message : 'An error occurred');
+          setLoading(false);
+        }
       }
     };
 

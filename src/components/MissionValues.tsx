@@ -31,7 +31,7 @@ const MissionValues = () => {
     <section id="mission" className="py-20 bg-card/50">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="space-y-16">
-          <div>
+          <div className="animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase">Our Mission</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               We are committed to making our community a welcoming space for everyone. Whether you're a seasoned
@@ -41,7 +41,7 @@ const MissionValues = () => {
             </p>
           </div>
 
-          <div>
+          <div className="animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase">Our Values</h2>
             <p className="text-lg text-muted-foreground mb-8">
               To foster a positive community, we encourage behaviors such as:
@@ -50,7 +50,8 @@ const MissionValues = () => {
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="bg-background border border-border rounded-lg p-6 hover:border-primary transition-colors"
+                  className="bg-background border border-border rounded-lg p-6 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <h3 className="text-xl font-semibold mb-3 text-primary">{value.title}</h3>
                   <p className="text-muted-foreground">{value.description}</p>

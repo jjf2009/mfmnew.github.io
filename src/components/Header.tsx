@@ -14,10 +14,11 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Community', href: '#' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Creators', href: '#creators' },
-    { name: 'Join us', href: '#join' },
+    { name: 'Community', href: '/' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Creators', href: '/#creators' },
+    { name: 'Join us', href: '/#join' },
   ];
 
   const handleNavClick = () => {
@@ -33,7 +34,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 max-w-6xl">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="shine-animation font-bold text-xl tracking-tight">
+          <a href="/" className="shine-animation font-bold text-xl tracking-tight">
             MFBT
           </a>
 
