@@ -1,0 +1,42 @@
+<footer class="relative py-12 border-t border-cyan-500/20 bg-gradient-to-b from-gray-950 to-gray-900">
+    <!-- Subtle background glow -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        <div class="flex items-center justify-between">
+            <a href="/" class="group flex items-center gap-3">
+                <svg class="w-8 h-8 transition-all duration-300 group-hover:scale-110" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 2L37 12V28L20 38L3 28V12L20 2Z" stroke="url(#footerLogoGradient)" stroke-width="2" fill="none"/>
+                    <circle cx="20" cy="20" r="6" fill="url(#footerLogoGradient)"/>
+                </svg>
+                <span class="font-['JetBrains_Mono'] font-bold text-xl tracking-tighter bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                    MFBT
+                </span>
+            </a>
+            
+            <a href="https://github.com/{{ .Site.Params.github_org }}" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="group relative p-3 rounded-xl border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300"
+               aria-label="GitHub">
+                <svg class="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                </svg>
+                <div class="absolute inset-0 bg-cyan-500 blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-xl"></div>
+            </a>
+        </div>
+        
+        <div class="mt-8 pt-8 border-t border-cyan-500/10 text-center text-sm text-gray-500">
+            <p>© {{ now.Year }} Move Fast and Break Things. Built with passion and code.</p>
+        </div>
+    </div>
+</footer>

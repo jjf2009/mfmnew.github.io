@@ -1,0 +1,85 @@
+<section id="creators" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        <h2 class="text-4xl md:text-6xl font-['JetBrains_Mono'] font-bold mb-4 text-center">
+            <span class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                MEET THE CREATORS
+            </span>
+        </h2>
+        <p class="text-center text-gray-400 mb-16 text-lg">
+            The brilliant minds building the future
+        </p>
+
+        <div id="creators-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Creators will be loaded here via JavaScript -->
+            <div class="col-span-full text-center py-12">
+                <div class="inline-block w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin"></div>
+                <p class="text-gray-400 mt-4">Loading creators...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Fetch and display creators
+async function loadCreators() {
+    try {
+        const response = await fetch('/data/creators.json');
+        if (!response.ok) throw new Error('Failed to fetch creators');
+        
+        const creators = await response.json();
+        const grid = document.getElementById('creators-grid');
+        
+        if (creators.length === 0) {
+            grid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-400">No creators found.</p></div>';
+            return;
+        }
+        
+        grid.innerHTML = creators.map(creator => `
+            <a href="${creator.html_url}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="group relative overflow-hidden rounded-2xl backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-800/50 border border-cyan-500/20 p-6 hover:border-cyan-400/60 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="relative">
+                            <img src="${creator.avatar}" 
+                                 alt="${creator.name}" 
+                                 class="w-16 h-16 rounded-full border-2 border-cyan-500/50 group-hover:border-cyan-400 group-hover:scale-110 transition-all duration-300"
+                                 loading="lazy">
+                            <div class="absolute inset-0 rounded-full bg-cyan-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-lg text-gray-100 group-hover:text-cyan-400 transition-colors truncate">
+                                ${creator.name}
+                            </h3>
+                            <p class="text-sm text-gray-500">@${creator.login}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 line-clamp-2">
+                        ${creator.bio || 'Building amazing things with code.'}
+                    </p>
+                </div>
+            </a>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading creators:', error);
+        document.getElementById('creators-grid').innerHTML = `
+            <div class="col-span-full text-center py-12">
+                <p class="text-red-400">Error loading creators. Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+// Load creators when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadCreators);
+} else {
+    loadCreators();
+}
+</script>

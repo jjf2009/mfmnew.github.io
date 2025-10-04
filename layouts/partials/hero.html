@@ -1,0 +1,66 @@
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <!-- Epic 3D-style background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Animated gradient orbs -->
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s;"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 5s; animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s; animation-delay: 2s;"></div>
+        
+        <!-- Grid overlay for depth -->
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px); background-size: 50px 50px; perspective: 1000px; transform: rotateX(60deg) translateZ(-100px);"></div>
+    </div>
+
+    <div class="container mx-auto px-4 max-w-6xl text-center relative z-10">
+        <!-- Main heading with aggressive gradient and 3D effect -->
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-['JetBrains_Mono'] font-bold mb-8 leading-none"
+            style="transform-style: preserve-3d; animation: fadeInUp 1s ease-out;">
+            <span class="block mb-2 text-gray-100" style="text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);">
+                MOVE FAST AND
+            </span>
+            <span class="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent relative"
+                  style="text-shadow: 0 0 60px rgba(6, 182, 212, 0.6), 0 0 100px rgba(59, 130, 246, 0.4);">
+                BREAK THINGS
+                <!-- Glowing underline -->
+                <svg class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-2" viewBox="0 0 300 8" fill="none">
+                    <defs>
+                        <linearGradient id="underlineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0" />
+                            <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M0 4 Q150 0 300 4" stroke="url(#underlineGradient)" stroke-width="3" fill="none" opacity="0.8"/>
+                </svg>
+            </span>
+        </h1>
+        
+        <!-- Subtitle with glassmorphism -->
+        <div class="max-w-3xl mx-auto p-8 rounded-2xl backdrop-blur-xl bg-gray-900/30 border border-cyan-500/20 shadow-2xl shadow-cyan-500/10"
+             style="animation: fadeInUp 1s ease-out 0.3s both;">
+            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                We are a community of <span class="text-cyan-400 font-semibold">software engineers</span> and 
+                <span class="text-blue-400 font-semibold">product developers</span>, originally created for students of KubSAU
+            </p>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="mt-16 animate-bounce">
+            <svg class="w-8 h-8 mx-auto text-cyan-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>

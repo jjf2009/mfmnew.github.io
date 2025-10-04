@@ -1,0 +1,20 @@
+baseURL = "https://movefastandbreakthings.club/"
+languageCode = "en-us"
+title = "Move Fast and Break Things"
+theme = ""
+
+[params]
+  description = "A community of software engineers and product developers, originally created for students of KubSAU"
+  author = "Move Fast and Break Things"
+  github_org = "move-fast-and-break-things"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[build]
+  writeStats = true

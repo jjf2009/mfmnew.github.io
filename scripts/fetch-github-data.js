@@ -9,7 +9,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ORG_NAME = 'move-fast-and-break-things';
-const OUTPUT_DIR = path.join(__dirname, '../public/data');
+// Support both Vite (public/) and Hugo (static/) output directories
+const OUTPUT_DIR = process.env.HUGO_BUILD 
+  ? path.join(__dirname, '../static/data')
+  : path.join(__dirname, '../public/data');
 
 async function fetchWithRetry(url, retries = 3) {
   for (let i = 0; i < retries; i++) {
